@@ -1,0 +1,16 @@
+# Secrets
+.env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Logs / local runtime
+*.log
+
+# OS
+.DS_Store
+
+# Sanctuary raw materials should stay local unless explicitly sanitized
+03_Sanctuary/raw/**
