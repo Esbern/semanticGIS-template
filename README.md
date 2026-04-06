@@ -8,6 +8,9 @@ This repository is a reusable template for starting a SemanticGIS project with c
 - `copilot-instructions.md`
 - `.gitignore`
 - `.env.example`
+- `00_Binary/raw/`
+- `00_Binary/staging/`
+- `00_Binary/derived/`
 - `01_Scoping/`
 - `02_Modelling/`
 - `03_Sanctuary/raw/`
@@ -27,6 +30,14 @@ This repository is a reusable template for starting a SemanticGIS project with c
 - `.env.example` is the required template for secret/config variable names.
 - Real values must be stored only in local `.env` (never in git).
 - Do not place secrets in sanctuary manifests, markdown documentation, scripts, or notebooks.
+
+### Data Separation (Required)
+
+- `03_Sanctuary/` is logical-only: manifests, lineage, NOIR/NORI attribute semantics, source descriptors, and transformation rationale.
+- `00_Binary/` is binary-only and local: raw downloads, staging files, derived binary artifacts.
+- Binary files remain inside the project workspace for sandboxing, but are gitignored.
+- The scaffold includes placeholder `.keep` files so binary folders exist after clone.
+- Agents must not write outside the project folder unless explicitly requested by the user.
 
 ## Required Environment Variables
 
