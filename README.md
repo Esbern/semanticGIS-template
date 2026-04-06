@@ -84,6 +84,34 @@ Both prompts will trigger the same underlying governance — local environments,
 - Link attribute semantics to the ontology in `02_Modelling/Ontology.md`.
 - Use `03_Sanctuary/Sanctuary_Index.md` to track which processed manifest covers each transformation.
 
+### Script Boundaries And Stage Validation (Required)
+
+- Agents should separate major workflow responsibilities into clear script domains:
+  - data acquisition/download
+  - analysis/modeling
+  - visualisation/export
+- If an orchestrator script is used, it should call stage scripts and keep stage boundaries explicit.
+- After each stage, scripts should provide user-readable completion info so users can validate progress:
+  - output path(s)
+  - a simple sanity metric (for example feature count, CRS, or file-exists check)
+  - a clear failure message if the stage did not complete
+
+### GIS-Focused Script Documentation (Required)
+
+- Write script documentation for GIS users, emphasizing workflow logic over code mechanics.
+- Document where core logic is implemented (script and function/section), so users can trace behavior quickly.
+- For OSM-based tasks, explicitly document:
+  - selected tags/query scope
+  - network assumptions (walk/bike/drive)
+  - clipping and boundary rules
+
+### Logging Modes For Scripts (Recommended)
+
+- Default to informative terminal output so users can follow progress during normal runs.
+- Support a quiet mode for quick low-noise operations.
+- Support file logging for long runs and debugging (recommended log directory: `.cache/logs/`).
+- Keep logger implementation flexible (standard `logging`, structured logger, or equivalent), as long as mode selection is explicit and user-controllable.
+
 ## Required Environment Variables
 
 Add project-specific secrets and configuration to `.env`. The `.env.example` file shows the expected variable names — replace or extend them for your project.

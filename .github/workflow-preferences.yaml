@@ -26,3 +26,10 @@ scripts:
   default_folder: 10_scripts
   document_logic_in_design_rationale: true
   allow_one_off_scripts_outside_default_folder: true
+
+logging:
+  default_mode: verbose
+  allow_quiet_mode: true
+  allow_file_logging: true
+  default_log_dir: .cache/logs
+  recommend_structured_logging: true

@@ -76,6 +76,28 @@ Any fetch or download script must:
 3. Transform into `00_Binary/derived/` in a separate step (may be the same script, but clearly staged).
 4. Append a provenance row to `03_Sanctuary/raw/_manifest.md`.
 
+Script responsibility boundaries must be explicit:
+1. Data acquisition logic belongs in fetch/download scripts only.
+2. Analytical computation belongs in analysis scripts only.
+3. Mapping/chart rendering belongs in visualisation scripts only.
+4. If a single orchestrator is used, it must call these stage scripts and keep stage boundaries visible.
+
+User validation checkpoints are required after each stage:
+1. Print or return a concise completion summary with key output paths.
+2. Include a basic sanity check signal (for example, row count, feature count, CRS, or file-exists status).
+3. Stop on stage failure and report the failing stage clearly.
+
+Script documentation for GIS users is required:
+1. Explain workflow logic in domain terms (not only implementation details).
+2. State where each core task is implemented (file and function/section).
+3. For OSM workflows, document task logic such as key tag filters, network type assumptions, and boundary rules.
+
+Logging behavior must support different run contexts:
+1. Default to informative/verbose terminal progress for GIS users unless quiet mode is requested.
+2. Allow redirecting logs to a file for long runs or debugging.
+3. Allow low-noise execution for quick operations.
+4. Implementation details are flexible (for example `logging` module, structured logger, or equivalent), but mode selection must be explicit.
+
 If a script writes binary payloads into `03_Sanctuary/` or outside the workspace without explicit user request, it violates this protocol.
 
 ## Python Environment Governance
