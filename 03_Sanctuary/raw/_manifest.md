@@ -15,7 +15,7 @@ The Sanctuary Index (`03_Sanctuary/Sanctuary_Index.md`) records transformation l
 Document each raw binary file with full source provenance. Include original CRS, attributes, and metadata.
 For attribute-level detail and NOIR levels, see the corresponding processed manifest in `03_Sanctuary/processed/`.
 
-| Filename | Source | Download date | Original CRS | Tool / method | Licence | Notes |
-|---|---|---|---|---|---|---|
-| `network_raw.shp` | *example:* https://download.example.org/network_v1.zip | 2026-04-01 | EPSG:4326 | `curl` + unzip | CC-BY 4.0 | Original attributes: `id`, `name`, `road_type`, `speed_limit`, `surface` |
-| | | | | | | |
+| Filename | Binary Path | Source | Download date | Original CRS | Tool / method | Licence | Notes |
+|---|---|---|---|---|---|---|---|
+| `network_raw.shp` | `00_Binary/raw/network_raw.shp` | *example:* https://download.example.org/network_v1.zip | 2026-04-01 | EPSG:4326 | `curl` + unzip | CC-BY 4.0 | Original attributes: `id`, `name`, `road_type`, `speed_limit`, `surface` |
+| | | | | | | | |

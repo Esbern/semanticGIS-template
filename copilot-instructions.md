@@ -18,6 +18,7 @@
 - `03_Sanctuary`: logical manifests and lineage (`raw/` + `processed/` descriptors, no binary payloads)
 - `04_Analytics`: analytical recipe and analysis plan
 - `05_Outputs`: narrative and visual specs
+- `10_scripts`: reusable project-local scripts (see `workflow-preferences.yaml` for default folder)
 
 ## Binary-Logical Separation Protocol
 
@@ -76,6 +77,17 @@ Any fetch or download script must:
 4. Append a provenance row to `03_Sanctuary/raw/_manifest.md`.
 
 If a script writes binary payloads into `03_Sanctuary/` or outside the workspace without explicit user request, it violates this protocol.
+
+## Python Environment Governance
+
+- Always use a project-local Python environment (`.venv`, `micromamba`, `conda`, or similar).
+- Never install packages into the global or system Python.
+- Consult `.github/workflow-preferences.yaml` for preferred manager and priority order.
+- Record environment decisions in `Design_Rationale.md` when they materially affect reproducibility.
+
+## Modular Instruction Packs
+
+Workflow recommendations live in `.github/instructions/*.instructions.md`. These express defaults as recommendations, preserving agent autonomy. Only items marked **Required** in those packs are hard constraints. Agents may deviate from **Recommended** defaults and should log the rationale in `Design_Rationale.md`.
 
 ## Safety Rules
 

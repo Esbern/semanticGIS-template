@@ -19,12 +19,47 @@ This repository is a reusable template for starting a SemanticGIS project with c
 - `05_Outputs/` — Output narrative and visualisation spec
 - `10_scripts/` — Reusable project-local scripts
 
+## Design Philosophy
+
+This template is built for **agentic AI-assisted GIS work** and is designed for both ad-hoc users (exploring a question for the first time) and professional analysts (running structured, reproducible workflows).
+
+Core principles:
+
+- **Intention first.** Start by describing what you want to understand or analyze. The project structure guides you from scoping through to outputs — you do not need to know the tooling up front.
+- **Agent autonomy with guardrails.** The AI agent chooses its own tools and libraries within a set of reproducible best-practice constraints. Hard rules (local Python environments, no secrets in committed files, binary-logical separation) are enforced. Everything else is a recommendation the agent can override with a logged rationale.
+- **Reproducible by default.** Every data acquisition is manifested, every transformation is logged, and all analysis runs inside a project-local environment — never the global Python.
+- **Low floor, high ceiling.** Ad-hoc users can clone this template, open it with an AI-enabled editor, and start working immediately. Power users can extend the instruction packs, add custom preferences, and wire in CI/CD.
+
 ## Quick Start
 
 1. Create a new repository from this template.
 2. Copy `.env.example` to `.env` and fill local values.
 3. Keep `.env` local only (never commit secrets).
-4. Start Phase 1 scoping and document assumptions in `Design_Rationale.md`.
+4. Open the project in an AI-enabled editor (VS Code with GitHub Copilot, Cursor, etc.).
+5. Paste the **onboarding prompt** below to orient the agent.
+6. Then describe your intent — see the example prompts for inspiration.
+
+### Onboarding Prompt (paste this first)
+
+> Please read through this entire repository — every file, every instruction pack, and the workflow preferences. Verify that you understand the SemanticGIS intent-first project structure, the binary-logical separation protocol, the NOIR attribute documentation requirements, and the two-layer instruction model (governance rules vs. modular recommendations). Summarise what you understand and flag anything that looks incomplete or inconsistent before we begin work.
+
+This ensures the agent loads all governance context and instruction packs before taking any action. You only need to do this once per conversation.
+
+### Example: Ad-Hoc User Prompt
+
+An ad-hoc user who has never done GIS work might start with a prompt like this:
+
+> I want to map and analyse schools, kindergartens, and other children's institutions in Rødovre Municipality. I want to see how they connect to safe cycling paths and whether kids can reach green areas via small roads and paths. The municipality has some large roads that act as barriers — I want those marked clearly, for instance in red. Use OSM data for this. The goal is to understand how child-friendly the cycling and walking accessibility is across the municipality.
+
+This works because it is **intention-first**: it names the geographic entities, describes the relationships that matter (connectivity, barriers, access to green space), states the analytical goal (child-friendly accessibility), and requests a data source — but leaves all tooling, environment, and protocol decisions to the agent.
+
+### Example: Professional Analyst Prompt
+
+A professional user might be more specific about method:
+
+> Set up a network analysis for Rødovre Municipality. Pull the walkable and cycleable OSM network via OSMnx. Geocode all schools and kindergartens from the Danish institution register (use the Datafordeler API key in .env). Compute isochrone polygons at 5, 10, and 15 minute walk/cycle times from each institution. Overlay green area polygons and flag institutions where no green area falls within the 10-minute cycling isochrone. Export the result as a GeoPackage and produce a static map with classified symbology.
+
+Both prompts will trigger the same underlying governance — local environments, manifested data, binary-logical separation, NOIR documentation — but the agent adapts its workflow to the user's level of specificity.
 
 ### Secrets Handling (Required)
 
@@ -51,7 +86,11 @@ This repository is a reusable template for starting a SemanticGIS project with c
 
 ## Required Environment Variables
 
-- `DATAFORDELER_API_KEY`
+Add project-specific secrets and configuration to `.env`. The `.env.example` file shows the expected variable names — replace or extend them for your project.
+
+The template ships with one example placeholder:
+
+- `DATAFORDELER_API_KEY` — Danish public-register access (remove if not needed)
 
 ## Canonical References
 

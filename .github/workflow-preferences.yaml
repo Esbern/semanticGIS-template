@@ -13,7 +13,7 @@ python:
     - micromamba
     - conda
     - venv
-  environment_name: roedover
+  environment_name: my-project
   venv_path: .venv
   decision_log_file: Design_Rationale.md
 
