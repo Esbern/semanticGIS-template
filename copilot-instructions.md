@@ -57,3 +57,5 @@ If a script writes directly to `processed/` without a corresponding raw file, it
 - Ask before destructive actions.
 - Do not expose restricted data in outputs.
 - Treat `.env` as local-only.
+- Secrets policy: keep credentials, tokens, connection passwords, and private DSNs in `.env` only. Use `.env.example` as the required template for which variables must be provided.
+- Never store real secrets in manifests, markdown files, scripts, notebooks, or committed config files.

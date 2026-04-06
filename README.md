@@ -22,6 +22,12 @@ This repository is a reusable template for starting a SemanticGIS project with c
 3. Keep `.env` local only (never commit secrets).
 4. Start Phase 1 scoping and document assumptions in `Design_Rationale.md`.
 
+### Secrets Handling (Required)
+
+- `.env.example` is the required template for secret/config variable names.
+- Real values must be stored only in local `.env` (never in git).
+- Do not place secrets in sanctuary manifests, markdown documentation, scripts, or notebooks.
+
 ## Required Environment Variables
 
 - `DATAFORDELER_API_KEY`
