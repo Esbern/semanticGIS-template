@@ -29,6 +29,7 @@ Use this section to guide what to document in each project phase.
 - Document sanitisation rituals (joins, geocoding, overlays, recoding).
 - Record procurement of primary data when source gaps remain.
 - Manifest each grounded dataset with provenance and rationale.
+- Follow the two-stage pipeline: store unmodified source files in `03_Sanctuary/raw/` first, then derive analysis-ready layers in `03_Sanctuary/processed/`. Never write directly to `processed/` without a corresponding raw copy. Log every raw file in `03_Sanctuary/raw/_manifest.md`.
 
 ### Protocol Logging Template
 

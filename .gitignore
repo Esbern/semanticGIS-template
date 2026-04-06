@@ -14,3 +14,5 @@ __pycache__/
 
 # Sanctuary raw materials should stay local unless explicitly sanitized
 03_Sanctuary/raw/**
+# ...but the provenance manifest placeholder is a template file, not data
+!03_Sanctuary/raw/_manifest.md
