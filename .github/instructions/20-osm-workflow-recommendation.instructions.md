@@ -7,6 +7,7 @@ applyTo: "**/*.{py,ipynb,md}"
 
 Recommended
 - Prefer `OSMnx` as the default OSM acquisition path for Python-based analysis.
+- Configure OSMnx to cache into the project `.cache/` folder: `ox.settings.cache_folder = ".cache/"`.
 - Let library defaults choose the Overpass endpoint unless there is a documented reason to override.
 - Use direct `curl` + raw Overpass queries primarily as fallback or for reproducible low-level debugging.
 - Keep OSM workflows split into stage scripts where practical:
