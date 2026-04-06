@@ -6,6 +6,11 @@
 __pycache__/
 *.pyc
 
+# Package caches (OSMnx, raster tiles, etc.)
+.cache/*
+# Keep folder structure tracked
+!.cache/.keep
+
 # Logs / local runtime
 *.log
 

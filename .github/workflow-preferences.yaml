@@ -1,0 +1,28 @@
+# Repository-level workflow preferences for agents.
+# Keep this file small and explicit. Values here are defaults, not hard policy,
+# unless they repeat a Required rule from instruction files.
+
+python:
+  require_local_environment: true
+  default_manager: venv
+  manager_priority:
+    - venv
+    - micromamba
+    - conda
+  gis_manager_priority:
+    - micromamba
+    - conda
+    - venv
+  environment_name: roedover
+  venv_path: .venv
+  decision_log_file: Design_Rationale.md
+
+osm:
+  preferred_fetch_library: osmnx
+  fallback_fetch_method: overpass_raw
+  allow_manual_endpoint_override: true
+
+scripts:
+  default_folder: 10_scripts
+  document_logic_in_design_rationale: true
+  allow_one_off_scripts_outside_default_folder: true

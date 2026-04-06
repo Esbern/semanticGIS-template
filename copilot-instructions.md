@@ -11,6 +11,7 @@
 
 ## Project Structure Contract
 
+- `.cache/`: ephemeral package caches (OSMnx, raster tiles, temporary downloads; gitignored)
 - `00_Binary`: local binary data root (gitignored) with `raw/`, `staging/`, `derived/`
 - `01_Scoping`: outline, stakeholder map, research questions
 - `02_Modelling`: ontology, NOIR attribute catalog, data model diagram
@@ -49,14 +50,22 @@ Never store binary dataset payloads in `03_Sanctuary`.
   - Original CRS
   - Download tool / method
   - Licence
+  - Notes (e.g., list of original attributes as they appear in the raw source)
 - Raw binaries must never be overwritten by processed outputs.
+- Do not document NOIR levels at the raw stage; NOIR assignment occurs during processing.
 
 ### Stage 2 — Processed
 
 - Derive processed binaries from `00_Binary/raw/` into `00_Binary/derived/` (optionally via `00_Binary/staging/`).
 - Apply reprojection, column selection, geometry normalisation, and filter rules in this stage.
-- Each processed dataset must be traceable in `03_Sanctuary/processed/` and `03_Sanctuary/Sanctuary_Index.md`.
-- The Sanctuary Index must record: raw manifest reference, transformation applied, processed manifest reference, and binary path.
+- Create a processed manifest in `03_Sanctuary/processed/[dataset]_manifest.md` for each derived dataset. Include:
+  - Transformation applied (e.g., CRS change, column selection, filtering rules).
+  - Attribute-level NOIR levels (Nominal, Ordinal, Interval, Ratio) for all output columns.
+  - Link to raw manifest row that fed this transformation.
+  - Link to ontology definitions in `02_Modelling/Ontology.md`.
+  - Binary path under `00_Binary/derived/`.
+- Update `03_Sanctuary/Sanctuary_Index.md` to record the lineage row.
+- The Sanctuary Index must record: raw manifest reference, transformation applied, processed manifest reference, NOIR coverage, and binary path.
 
 ### Enforcement rule for AI-generated scripts
 

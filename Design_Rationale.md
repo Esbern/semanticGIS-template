@@ -29,7 +29,11 @@ Use this section to guide what to document in each project phase.
 - Document sanitisation rituals (joins, geocoding, overlays, recoding).
 - Record procurement of primary data when source gaps remain.
 - Manifest each grounded dataset with provenance and rationale.
-- Follow the two-stage pipeline: store unmodified source files in `03_Sanctuary/raw/` first, then derive analysis-ready layers in `03_Sanctuary/processed/`. Never write directly to `processed/` without a corresponding raw copy. Log every raw file in `03_Sanctuary/raw/_manifest.md`.
+- Follow the two-stage pipeline with strict separation of concerns:
+	- Store unmodified source binaries in `00_Binary/raw/` first.
+	- Derive analysis-ready binaries into `00_Binary/derived/` (optionally via `00_Binary/staging/`).
+	- Keep `03_Sanctuary/` logical-only (manifests, lineage, semantic descriptors), with no binary payloads.
+	- Log raw provenance in `03_Sanctuary/raw/_manifest.md` and record transformation lineage in `03_Sanctuary/Sanctuary_Index.md`.
 
 ### Protocol Logging Template
 
@@ -69,3 +73,18 @@ Use this template for each phase pass:
 ## Open Questions
 
 - 
+
+## Script Logic Registry
+
+Use this section when adding or changing reusable scripts.
+
+### Script Entry Template
+
+- Date:
+- Script path:
+- Purpose:
+- Inputs:
+- Outputs:
+- Core logic:
+- Dependencies / environment assumptions:
+- Reusability notes:
