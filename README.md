@@ -49,9 +49,9 @@ This ensures the agent loads all governance context and instruction packs before
 
 An ad-hoc user who has never done GIS work might start with a prompt like this:
 
-> I want to map and analyse schools, kindergartens, and other children's institutions in Rødovre Municipality. I want to see how they connect to safe cycling paths and whether kids can reach green areas via small roads and paths. The municipality has some large roads that act as barriers — I want those marked clearly, for instance in red. Use OSM data for this. The goal is to understand how child-friendly the cycling and walking accessibility is across the municipality.
+> I want to map schools, kindergartens, and other children's institutions in Rødovre Municipality using OSM data. For each institution I want to know how much green area is within 15 minutes walking distance. The municipality has some large roads that act as barriers — mark those clearly in red. Show the results as an interactive web map.
 
-This works because it is **intention-first**: it names the geographic entities, describes the relationships that matter (connectivity, barriers, access to green space), states the analytical goal (child-friendly accessibility), and requests a data source — but leaves all tooling, environment, and protocol decisions to the agent.
+This works because it is **intention-first**: it names the geographic entities, specifies a concrete metric (green area within 15-minute walk), calls out a spatial relationship (barrier roads), picks a data source, and requests a tangible output format — but leaves all tooling, environment, and protocol decisions to the agent.
 
 ### Example: Professional Analyst Prompt
 
