@@ -33,10 +33,11 @@ Default lifecycle for any data source (registers, APIs, OSM, CSV, rasters, field
 3. Sanitize into a project-ready version (filtered, normalized, reprojected as needed).
 4. Document the sanitized dataset and lineage.
 5. Pause for human approval (optional quick visualization/check).
-6. Run analysis from sanitized data.
-7. Document analysis outputs and assumptions.
-8. Pause for human approval.
-9. Produce final visualizations/communication outputs.
+6. For multi-step analysis: write a design brief in `04_Analytics/Analytical_Recipe.md` and wait for user approval before coding.
+7. Implement and run analysis from sanitized data.
+8. Document analysis outputs and assumptions.
+9. Pause for human approval.
+10. Produce final visualizations/communication outputs.
 
 This is the recommended default, not a hard lock.
 Agents may adapt sequence or combine steps when appropriate, but should explain the rationale in `Design_Rationale.md`.
@@ -104,6 +105,14 @@ Phase-gated delivery is required by default:
 3. Wait for user confirmation after each stage checkpoint before proceeding to the next stage.
 4. If downstream script design depends on upstream outputs, inspect validated outputs rather than assuming them.
 5. Full end-to-end pipeline generation is allowed only when explicitly requested by the user, or after all prior stages have completed successfully and the user asks to consolidate.
+
+Design-before-code gate for multi-step analysis:
+1. Before writing any script that involves multi-step analysis, spatial joins, network modelling, or aggregation logic, first write a concise design brief in `04_Analytics/Analytical_Recipe.md`.
+2. The design brief must state: what data is consumed, what operation is performed, what output is produced, and what assumptions are made.
+3. Present the design brief to the user and wait for approval before implementing code.
+4. Simple single-operation tasks (a straightforward fetch, a single format conversion, a quick plot) are exempt and may proceed directly to implementation.
+5. After implementation, update the design brief with any deviations that occurred during coding.
+6. The purpose of this gate is to give non-programmer users a readable checkpoint before code is written, since code itself is not a meaningful review artifact for this audience.
 
 User validation checkpoints are required after each stage:
 1. Print or return a concise completion summary with key output paths.

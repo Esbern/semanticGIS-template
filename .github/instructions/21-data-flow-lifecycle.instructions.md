@@ -12,7 +12,9 @@ Recommended
   - sanitize into project-ready dataset
   - document sanitized dataset and lineage
   - request human approval checkpoint
-  - run analysis from sanitized dataset
+  - **write design brief for analysis logic** (in `04_Analytics/Analytical_Recipe.md`) for multi-step analysis tasks
+  - **request human approval of design brief**
+  - implement and run analysis from sanitized dataset
   - document analysis outputs
   - request human approval checkpoint
   - produce final visualizations/outputs

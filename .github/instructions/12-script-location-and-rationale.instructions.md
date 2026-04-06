@@ -13,13 +13,17 @@ Recommended
 	- analysis stage (for example `analyze_*.py`)
 	- visualisation stage (for example `visualize_*.py`)
 - Default to phase-gated delivery: finish one stage and validate it before writing the next stage script.
+- For multi-step analysis scripts, apply the design-before-code gate: write a design brief in `04_Analytics/Analytical_Recipe.md` and get user approval before implementing code.
+- Simple single-operation tasks (a straightforward fetch, format conversion, quick plot) may skip the design brief and proceed directly to implementation.
 - Follow this recommended lifecycle across all data flows:
 	- raw access/download
 	- raw documentation
 	- sanitization to project-ready dataset
 	- sanitized documentation
 	- human approval checkpoint
-	- analysis from sanitized dataset
+	- **design brief for analysis logic** (in Analytical Recipe)
+	- **human approval of design brief**
+	- analysis implementation from sanitized dataset
 	- analysis output documentation
 	- human approval checkpoint
 	- final visualization/output stage
@@ -31,6 +35,7 @@ Recommended
 
 Required
 - Keep scripts inside the workspace boundary.
+- For multi-step analysis scripts, write a design brief in `04_Analytics/Analytical_Recipe.md` and obtain user approval before writing code. Simple single-operation tasks are exempt.
 - Document the overall script logic and intended use in `Design_Rationale.md`.
 - Keep script responsibilities clear: do not merge data download, analysis, and visualisation into one opaque stage.
 - Do not author all stage scripts in advance unless the user explicitly asks for a full pipeline.
