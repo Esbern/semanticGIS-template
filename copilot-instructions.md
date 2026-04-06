@@ -25,6 +25,22 @@
 All projects must keep logic and binaries separate.
 Never store binary dataset payloads in `03_Sanctuary`.
 
+## Recommended Data Flow Lifecycle (All Sources)
+
+Default lifecycle for any data source (registers, APIs, OSM, CSV, rasters, field data):
+1. Download/access raw source first.
+2. Document the raw source provenance.
+3. Sanitize into a project-ready version (filtered, normalized, reprojected as needed).
+4. Document the sanitized dataset and lineage.
+5. Pause for human approval (optional quick visualization/check).
+6. Run analysis from sanitized data.
+7. Document analysis outputs and assumptions.
+8. Pause for human approval.
+9. Produce final visualizations/communication outputs.
+
+This is the recommended default, not a hard lock.
+Agents may adapt sequence or combine steps when appropriate, but should explain the rationale in `Design_Rationale.md`.
+
 ### Logical Layer (`03_Sanctuary/`)
 
 - `03_Sanctuary/raw/` stores raw-source manifests and provenance descriptors.
@@ -82,10 +98,28 @@ Script responsibility boundaries must be explicit:
 3. Mapping/chart rendering belongs in visualisation scripts only.
 4. If a single orchestrator is used, it must call these stage scripts and keep stage boundaries visible.
 
+Phase-gated delivery is required by default:
+1. Do not generate all stage scripts at once unless the user explicitly requests a full pipeline.
+2. Complete one stage first (script, run, checkpoint, and documentation) before authoring the next stage.
+3. Wait for user confirmation after each stage checkpoint before proceeding to the next stage.
+4. If downstream script design depends on upstream outputs, inspect validated outputs rather than assuming them.
+5. Full end-to-end pipeline generation is allowed only when explicitly requested by the user, or after all prior stages have completed successfully and the user asks to consolidate.
+
 User validation checkpoints are required after each stage:
 1. Print or return a concise completion summary with key output paths.
 2. Include a basic sanity check signal (for example, row count, feature count, CRS, or file-exists status).
 3. Stop on stage failure and report the failing stage clearly.
+
+Checkpoint format must be consistent but format-agnostic:
+1. Every stage report must include the same minimum fields:
+  - stage_name
+  - status (success|failed)
+  - outputs (paths)
+  - sanity_metrics (key-value)
+  - next_expected_input (for next stage)
+  - notes_for_user_validation
+2. Output format is flexible (plain text block, table, JSON, YAML, or structured logs).
+3. Scripts must not assume a single process framework; they should only preserve the field contract.
 
 Script documentation for GIS users is required:
 1. Explain workflow logic in domain terms (not only implementation details).

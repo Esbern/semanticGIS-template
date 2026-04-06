@@ -91,10 +91,31 @@ Both prompts will trigger the same underlying governance — local environments,
   - analysis/modeling
   - visualisation/export
 - If an orchestrator script is used, it should call stage scripts and keep stage boundaries explicit.
+- Default workflow is phase-gated: complete and validate one stage before creating the next stage script.
+- Agents should wait for user confirmation between stages.
+- Full pipeline creation is only expected when the user explicitly asks for it, or after all prior stages are complete and the user requests consolidation.
 - After each stage, scripts should provide user-readable completion info so users can validate progress:
   - output path(s)
   - a simple sanity metric (for example feature count, CRS, or file-exists check)
   - a clear failure message if the stage did not complete
+- Use a consistent checkpoint field contract across stages while allowing any output format:
+  - `stage_name`, `status`, `outputs`, `sanity_metrics`, `next_expected_input`, `notes_for_user_validation`
+  - accepted formats: plain text, table, JSON/YAML, or structured logs
+
+### Recommended Data Lifecycle (All Sources)
+
+- Use this default lifecycle for any source type (API, OSM, file download, register, raster, survey):
+  - acquire raw data
+  - document raw provenance
+  - sanitize into project-ready data
+  - document sanitized data and lineage
+  - pause for user approval (optionally with quick visualization)
+  - run analysis on sanitized data
+  - document analysis outputs
+  - pause for user approval
+  - produce final visualization/communication outputs
+- This is a recommendation, not a hard lock: the AI can adapt the sequence when justified by the task.
+- When deviating, record the rationale in `Design_Rationale.md`.
 
 ### GIS-Focused Script Documentation (Required)
 
@@ -145,6 +166,7 @@ Included starter packs:
 - `.github/instructions/11-python-env-selection-from-config.instructions.md`
 - `.github/instructions/12-script-location-and-rationale.instructions.md`
 - `.github/instructions/20-osm-workflow-recommendation.instructions.md`
+- `.github/instructions/21-data-flow-lifecycle.instructions.md`
 - `.github/instructions/30-recommendation-deviation-log.instructions.md`
 
 Add your own packs by creating new files in `.github/instructions/` with clear `description` and `applyTo` frontmatter.

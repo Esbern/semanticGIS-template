@@ -26,6 +26,9 @@ scripts:
   default_folder: 10_scripts
   document_logic_in_design_rationale: true
   allow_one_off_scripts_outside_default_folder: true
+  default_execution_mode: phase_gated
+  require_user_confirmation_between_stages: true
+  allow_full_pipeline_only_on_explicit_request: true
 
 logging:
   default_mode: verbose
@@ -33,3 +36,21 @@ logging:
   allow_file_logging: true
   default_log_dir: .cache/logs
   recommend_structured_logging: true
+
+data_flow:
+  default_lifecycle: acquire_document_sanitize_document_approve_analyze_document_approve_visualize
+  require_checkpoint_after_each_stage: true
+  allow_lifecycle_deviation_with_rationale: true
+  checkpoint_required_fields:
+    - stage_name
+    - status
+    - outputs
+    - sanity_metrics
+    - next_expected_input
+    - notes_for_user_validation
+  checkpoint_output_formats:
+    - plain_text
+    - table
+    - json
+    - yaml
+    - structured_logs

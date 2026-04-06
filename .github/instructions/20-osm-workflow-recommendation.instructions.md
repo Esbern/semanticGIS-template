@@ -13,11 +13,14 @@ Recommended
 	- fetch/download
 	- analysis/modeling
 	- visualisation/export
+- Deliver OSM workflows stage-by-stage by default, not as a pre-authored full pipeline.
 
 Required
 - Store raw binaries in `00_Binary/raw/` first.
 - Keep `03_Sanctuary/` logical-only (manifests, lineage, descriptors), with no binary payloads.
 - Log provenance in `03_Sanctuary/raw/_manifest.md` and lineage in `03_Sanctuary/Sanctuary_Index.md`.
+- Do not generate downstream OSM stage scripts before the prior stage has completed and been validated.
+- Wait for user confirmation between OSM stages unless the user explicitly requests full pipeline creation.
 - After each OSM stage, emit a user validation checkpoint including output paths and at least one sanity metric.
 - Document OSM task logic in user-facing terms, including:
 	- key tag filters or query scope
