@@ -35,10 +35,12 @@ Required
 2. The model may add assumption-derived candidates, but these must be clearly labeled as assumption-derived.
 3. If more than one viable realisation exists, present alternatives to the user before final dataset selection.
 4. Record final selection rationale in `Design_Rationale.md`.
+5. An explicit user-stated dataset or realisation choice in the prompt satisfies the dataset-selection confirmation gate for that choice.
 
 Human decision default
 1. The default policy is human selection after recommendation.
 2. Recommendation output must summarize semantic fit, access method, geometry implications, quality limits, and operational risk.
+3. If the user already selected the dataset or realisation explicitly, do not ask again for that same decision unless a conflict or ambiguity is discovered.
 
 Low-touch policy profiles
 1. If `.github/workflow-preferences.yaml` enables a policy profile with auto-selection, the model may apply rule-based prioritization.
@@ -75,6 +77,7 @@ When multiple geometry implementations are possible (for example identity object
   - known risks/limitations
   - recommended use cases
 3. Wait for user confirmation before committing to a geometry mode when options are materially different.
+4. If the user has already explicitly selected a geometry mode, that satisfies the geometry confirmation gate unless the selected mode conflicts with contract semantics or task requirements.
 
 If contract geometry guidance is unavailable, local template guidance may be used with explicit uncertainty notes.
 

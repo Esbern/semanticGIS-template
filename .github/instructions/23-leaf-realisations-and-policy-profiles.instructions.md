@@ -11,6 +11,7 @@ Required
 - Present the user with a recommendation table when alternatives exist.
 - Label any non-contract candidate as assumption-derived.
 - Record final dataset-selection rationale in `Design_Rationale.md`.
+- Treat an explicit user-stated dataset or realisation choice as satisfying the dataset-selection gate for that choice.
 
 Recommendation table (minimum columns)
 - realisation_id
@@ -26,7 +27,7 @@ Decision flow
 1. Discover contract-backed candidates.
 2. Add assumption-derived candidates only if helpful and clearly labeled.
 3. Apply policy profile from `.github/workflow-preferences.yaml`.
-4. If profile is human-first, request user decision.
+4. If profile is human-first, request user decision unless the user already made that decision explicitly.
 5. If profile is auto-select, apply profile rule, report skipped alternatives, and allow override.
 
 Low-touch municipal profile guidance
@@ -36,3 +37,7 @@ Low-touch municipal profile guidance
 Fallback
 - If contract-backed candidates cannot be resolved, continue with local template guidance and explicit uncertainty notes.
 - If no documented solution works, propose alternative acquisition methods and request user confirmation before execution.
+
+Notes
+- Explicit dataset choice does not bypass access-contract rules.
+- Explicit dataset choice does not bypass geometry review when materially different geometry modes remain unresolved.
