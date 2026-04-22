@@ -9,6 +9,23 @@
 5. Keep logical sanctuary content separate from binary data storage.
 6. Never print, persist, or commit real credentials.
 
+## Contract Resolution Order (Hard Policy)
+
+For dataset access behavior, use this resolution order before implementing fetch logic:
+1. Resolve machine-readable contract from the mapped website hub (`semanticgis.dk` or `semanticgis.org`) using source-type routing from `.github/workflow-preferences.yaml`.
+2. If website contract is unavailable, use local contract snapshot if present.
+3. If no snapshot exists, follow local template recommendations.
+4. Only if no contract-backed solution works, design an exploratory alternative and label it explicitly as non-contract fallback.
+
+Required
+1. Do not guess endpoint/query style when a machine-readable contract is available.
+2. Record contract-resolution outcome in `Design_Rationale.md` before running acquisition scripts.
+3. If contract retrieval fails, record failure evidence and continue with local fallback rules.
+
+Allowed flexibility
+1. The model may propose alternative methods when contracts are unavailable or contract approach fails operationally.
+2. Alternative methods must include rationale, risk notes, and a path back to contract-compliant behavior.
+
 ## OSM Acquisition Guardrail (Hard Policy)
 
 For OpenStreetMap retrieval tasks, this repository enforces an OSMnx-first policy.
@@ -27,6 +44,20 @@ Disallowed by default:
 1. Starting with raw Overpass for standard OSM feature/network retrieval.
 2. Hardcoding manual Overpass endpoints for normal runs.
 3. Leaving fallback code as the primary path when OSMnx is available.
+
+## Geometry Mode Selection (Human Decision Gate)
+
+When multiple geometry implementations are possible (for example identity object vs geometry provider split), the model must:
+1. Extract geometry options from contract sources first.
+2. Present a concise recommendation table to the user with:
+  - geometry option
+  - semantic meaning
+  - analytical implications
+  - known risks/limitations
+  - recommended use cases
+3. Wait for user confirmation before committing to a geometry mode when options are materially different.
+
+If contract geometry guidance is unavailable, local template guidance may be used with explicit uncertainty notes.
 
 ## Project Structure Contract
 

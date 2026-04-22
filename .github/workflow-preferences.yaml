@@ -66,9 +66,28 @@ knowledge_hubs:
   default_danish_contract_hub: semanticgis.dk
   default_global_contract_hub: semanticgis.org
   allow_multi_hub_in_single_project: true
+  require_machine_readable_contract_first: true
+  allow_local_fallback_if_contract_unavailable: true
+  allow_exploratory_alternative_if_no_contract_solution: true
+  require_explicit_rationale_when_contract_unavailable: true
+  require_contract_resolution_log: true
+  contract_resolution_log_file: Design_Rationale.md
+  machine_readable_contract_priority:
+    - website_machine_readable
+    - local_contract_snapshot
+    - local_template_recommendations
+    - exploratory_alternative
   route_by_source_type:
     danish_registers: semanticgis.dk
     datafordeler_services: semanticgis.dk
     osm: semanticgis.org
     satellite_imagery: semanticgis.org
     global_reference_layers: semanticgis.org
+
+geometry:
+  require_geometry_mode_declaration: true
+  require_human_review_for_geometry_mode_selection: true
+  require_geometry_options_summary_from_contract: true
+  geometry_options_output_format: recommendation_table
+  allow_alternative_geometry_mode_if_contract_missing: true
+  require_rationale_for_geometry_deviation: true
