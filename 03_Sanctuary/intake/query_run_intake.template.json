@@ -12,6 +12,23 @@
   "auth_mode": "apikey_query_param|token_query_param|none|other",
   "selected_leaf": "replace_with_leaf_reference_if_known",
   "selected_dataset": "replace_with_dataset_reference_if_known",
+  "geometry_representation": {
+    "available_representations": [
+      {
+        "id": "replace_with_rep_id",
+        "label": "replace_with_label",
+        "source_dataset": "replace_with_dataset",
+        "geometry_type": "Point|LineString|Polygon|MultiPolygon",
+        "native_crs": "EPSG:XXXX",
+        "geometry_field_path": "replace_with_field_path",
+        "suitable_for": ["replace_with_use_case"],
+        "not_suitable_for": ["replace_with_incompatible_use_case"]
+      }
+    ],
+    "selected_representation_id": "replace_with_selected_id",
+    "selection_rationale": "replace_with_rationale",
+    "use_case_warnings": "replace_with_any_warnings_about_the_chosen_representation"
+  },
   "planned_artifacts": [
     {
       "artifact_name": "summary_results",
@@ -34,6 +51,7 @@
     "service_type_confirmed": false,
     "query_contract_confirmed": false,
     "geometry_contract_confirmed": false,
+    "representation_selection_confirmed": false,
     "auth_contract_confirmed": false,
     "artifact_contract_declared": false
   },
