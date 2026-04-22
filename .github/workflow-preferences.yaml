@@ -91,3 +91,25 @@ geometry:
   geometry_options_output_format: recommendation_table
   allow_alternative_geometry_mode_if_contract_missing: true
   require_rationale_for_geometry_deviation: true
+
+dataset_selection:
+  require_leaf_realisations_discovery: true
+  require_contract_backed_realisations_first: true
+  allow_assumption_derived_candidates: true
+  require_label_for_assumption_derived_candidates: true
+  require_human_decision_when_multiple_realisations: true
+  allow_policy_profile_auto_selection: true
+  default_policy_profile: balanced_contract_first
+  require_selection_rationale_log: true
+  selection_rationale_log_file: Design_Rationale.md
+  policy_profiles:
+    balanced_contract_first:
+      description: Present alternatives and request human selection.
+      auto_select: false
+    municipality_grunddata_first:
+      description: Prefer Grunddataprogrammet-derived realisations when available.
+      auto_select: true
+      prefer_collections:
+        - Grunddataprogrammet
+      still_report_alternatives: true
+      allow_user_override: true

@@ -26,6 +26,25 @@ Allowed flexibility
 1. The model may propose alternative methods when contracts are unavailable or contract approach fails operationally.
 2. Alternative methods must include rationale, risk notes, and a path back to contract-compliant behavior.
 
+## Leaf Realisation Selection (Hard Policy)
+
+Many SPHERE leaves have multiple valid realisations. These must not be collapsed to one dataset automatically unless an explicit policy profile allows it.
+
+Required
+1. For a target leaf, discover realisation candidates from contract/SPHERE sources first.
+2. The model may add assumption-derived candidates, but these must be clearly labeled as assumption-derived.
+3. If more than one viable realisation exists, present alternatives to the user before final dataset selection.
+4. Record final selection rationale in `Design_Rationale.md`.
+
+Human decision default
+1. The default policy is human selection after recommendation.
+2. Recommendation output must summarize semantic fit, access method, geometry implications, quality limits, and operational risk.
+
+Low-touch policy profiles
+1. If `.github/workflow-preferences.yaml` enables a policy profile with auto-selection, the model may apply rule-based prioritization.
+2. Example: municipality profile may prefer Grunddataprogrammet realisations when available.
+3. Even in auto-selection mode, report alternative candidates and allow user override.
+
 ## OSM Acquisition Guardrail (Hard Policy)
 
 For OpenStreetMap retrieval tasks, this repository enforces an OSMnx-first policy.
