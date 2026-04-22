@@ -12,10 +12,11 @@
 ## Contract Resolution Order (Hard Policy)
 
 For dataset access behavior, use this resolution order before implementing fetch logic:
-1. Resolve machine-readable contract from the mapped website hub (`semanticgis.dk` or `semanticgis.org`) using source-type routing from `.github/workflow-preferences.yaml`.
-2. If website contract is unavailable, use local contract snapshot if present.
-3. If no snapshot exists, follow local template recommendations.
-4. Only if no contract-backed solution works, design an exploratory alternative and label it explicitly as non-contract fallback.
+1. Read the local hub contract index and routing contracts declared in `.github/workflow-preferences.yaml`.
+2. Resolve machine-readable contract from the mapped website hub (`semanticgis.dk` or `semanticgis.org`) only through explicitly declared contract endpoints.
+3. If website contract is unavailable, use local contract snapshot if present.
+4. If no snapshot exists, follow local template recommendations.
+5. Only if no contract-backed solution works, design an exploratory alternative and label it explicitly as non-contract fallback.
 
 Required
 1. Do not guess endpoint/query style when a machine-readable contract is available.
@@ -23,6 +24,7 @@ Required
 3. If contract retrieval fails, record failure evidence and continue with local fallback rules.
 4. Treat machine-readable contract entrypoints as contract artifacts only when they match declared contract files or dataset/service contract records.
 5. Do not treat README pages, manifesto pages, bootstrap manifests, or general appendix pages as machine-readable contracts.
+6. Do not probe undocumented website URLs for contracts when the local hub contract index does not declare them.
 
 Allowed flexibility
 1. The model may propose alternative methods when contracts are unavailable or contract approach fails operationally.

@@ -159,6 +159,7 @@ These are not machine-readable service/data contracts and must not be used as co
 
 Every new project should treat semanticgis.dk and semanticgis.org as shared source-contract hubs and this template as the local execution layer.
 
+- Read and apply first: `03_Sanctuary/semanticgis_hub_contract_index.v1.json`
 - Read and apply: `03_Sanctuary/semanticgisdk_interface_contract.v1.md`
 - Read and apply: `03_Sanctuary/semanticgis_hub_routing.contract.v1.json`
 - Instantiate output contract from: `03_Sanctuary/processed/query_artifact_manifest.template.json`

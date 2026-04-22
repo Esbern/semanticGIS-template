@@ -6,6 +6,7 @@ applyTo: "**/*.{py,ipynb,md,yml,yaml,json}"
 # Contract-First Access and Geometry
 
 Required
+- Read local contract index `03_Sanctuary/semanticgis_hub_contract_index.v1.json` first.
 - Resolve dataset access strategy from machine-readable contract sources first.
 - Use source-type hub routing from `.github/workflow-preferences.yaml` to decide whether to consult `semanticgis.dk` or `semanticgis.org`.
 - Use declared contract entrypoints and explicit contract artifacts first; do not substitute human-oriented hub pages.
@@ -20,6 +21,7 @@ Required (No guessing rule)
 - Do not guess API style, endpoint family, or query syntax if a contract is available.
 - For Datafordeler/BBR-like sources with GraphQL contract, do not substitute guessed REST/Overpass-style access patterns.
 - Do not treat bootstrap manifests, manifesto pages, README pages, or generic appendix pages as machine-readable contracts.
+- Do not probe undocumented remote URLs when the local hub contract index does not declare a valid machine-readable contract endpoint.
 
 Geometry handling
 - If multiple geometry implementations exist, produce a recommendation table for human review before selecting one.

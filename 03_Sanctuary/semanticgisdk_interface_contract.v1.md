@@ -35,16 +35,18 @@ A project should not rediscover service type, auth mode, geometry fields, or que
 
 At project start, the agent should resolve these checks before coding extraction logic:
 
-1. Hub routing check.
-2. Dataset capability check.
-3. Query contract check.
-4. Geometry contract check.
-5. Geometry representation selection — enumerate available representations, present to user if multiple exist, record chosen representation and rationale.
-6. Auth contract check.
-7. Artifact contract check.
+1. Local hub contract index check.
+2. Hub routing check.
+3. Dataset capability check.
+4. Query contract check.
+5. Geometry contract check.
+6. Geometry representation selection — enumerate available representations, present to user if multiple exist, record chosen representation and rationale.
+7. Auth contract check.
+8. Artifact contract check.
 
 Expected check outputs:
 
+- Local hub contract index check confirms which machine-readable contract endpoints are valid to fetch and which remote page classes are prohibited.
 - Hub routing check assigns a source hub per source type (semanticgis.dk or semanticgis.org).
 - Dataset capability check confirms service family and endpoint from hub contracts.
 - Query contract check confirms pagination, required temporal args, and allowed filters.
@@ -112,6 +114,7 @@ Do not:
 
 ## Related Local Files
 
+- 03_Sanctuary/semanticgis_hub_contract_index.v1.json
 - 03_Sanctuary/Sanctuary_Index.md
 - 03_Sanctuary/raw/_manifest.md
 - 03_Sanctuary/intake/query_run_intake.template.json
