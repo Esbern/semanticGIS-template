@@ -147,9 +147,13 @@ The template ships with one example placeholder:
 
 ## Canonical References
 
+Human-oriented references:
+
 - SemanticGIS Project Bootstrap Manifest (semanticgis.org)
 - Intent-First Copilot Instructions Template (semanticgis.org)
 - Introduction: The SemanticGIS Manifesto (semanticgis.org)
+
+These are not machine-readable service/data contracts and must not be used as contract endpoints for runtime acquisition logic.
 
 ## semanticgis Hub Interface (Project Startup)
 
@@ -158,6 +162,11 @@ Every new project should treat semanticgis.dk and semanticgis.org as shared sour
 - Read and apply: `03_Sanctuary/semanticgisdk_interface_contract.v1.md`
 - Read and apply: `03_Sanctuary/semanticgis_hub_routing.contract.v1.json`
 - Instantiate output contract from: `03_Sanctuary/processed/query_artifact_manifest.template.json`
+
+Contract resolution rule:
+
+- Start from declared contract artifacts and contract records, not general website pages.
+- Human-readable hub pages may explain the system, but they do not count as machine-readable contracts unless they are explicit contract files.
 
 Hub-routing rule:
 

@@ -21,6 +21,8 @@ Required
 1. Do not guess endpoint/query style when a machine-readable contract is available.
 2. Record contract-resolution outcome in `Design_Rationale.md` before running acquisition scripts.
 3. If contract retrieval fails, record failure evidence and continue with local fallback rules.
+4. Treat machine-readable contract entrypoints as contract artifacts only when they match declared contract files or dataset/service contract records.
+5. Do not treat README pages, manifesto pages, bootstrap manifests, or general appendix pages as machine-readable contracts.
 
 Allowed flexibility
 1. The model may propose alternative methods when contracts are unavailable or contract approach fails operationally.

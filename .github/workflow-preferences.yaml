@@ -77,6 +77,14 @@ knowledge_hubs:
     - local_contract_snapshot
     - local_template_recommendations
     - exploratory_alternative
+  website_machine_readable_entrypoints:
+    routing_contract: 03_Sanctuary/semanticgis_hub_routing.contract.v1.json
+    interface_contract: 03_Sanctuary/semanticgisdk_interface_contract.v1.md
+  prohibited_as_machine_readable_contract:
+    - README_pages
+    - manifesto_pages
+    - bootstrap_manifest_pages
+    - general_appendix_pages
   route_by_source_type:
     danish_registers: semanticgis.dk
     datafordeler_services: semanticgis.dk
