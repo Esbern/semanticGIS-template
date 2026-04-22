@@ -19,8 +19,15 @@ python:
 
 osm:
   preferred_fetch_library: osmnx
-  fallback_fetch_method: overpass_raw
-  allow_manual_endpoint_override: true
+  fallback_fetch_method: overpass_raw_last_resort
+  allow_manual_endpoint_override: false
+  require_osmnx_first: true
+  overpass_raw_last_resort_only: true
+  require_osmnx_failure_evidence_for_fallback: true
+  require_design_rationale_log_for_osm_fallback: true
+  osmnx_min_attempts_before_fallback: 2
+  osmnx_retry_on_429: true
+  osmnx_retry_backoff_seconds: [5, 15]
 
 scripts:
   default_folder: 10_scripts

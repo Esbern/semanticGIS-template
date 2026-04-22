@@ -9,6 +9,25 @@
 5. Keep logical sanctuary content separate from binary data storage.
 6. Never print, persist, or commit real credentials.
 
+## OSM Acquisition Guardrail (Hard Policy)
+
+For OpenStreetMap retrieval tasks, this repository enforces an OSMnx-first policy.
+
+Required order:
+1. Use OSMnx first.
+2. Let OSMnx/library defaults choose endpoint behavior for normal runs.
+3. Use raw Overpass only as a last resort after documented OSMnx failure evidence.
+
+Raw Overpass fallback is allowed only when all are true:
+1. OSMnx was attempted and retried according to `.github/workflow-preferences.yaml`.
+2. Failure evidence is logged in `Design_Rationale.md`.
+3. Fallback scope is limited to the blocked step and not made the default path.
+
+Disallowed by default:
+1. Starting with raw Overpass for standard OSM feature/network retrieval.
+2. Hardcoding manual Overpass endpoints for normal runs.
+3. Leaving fallback code as the primary path when OSMnx is available.
+
 ## Project Structure Contract
 
 - `.cache/`: ephemeral package caches (OSMnx, raster tiles, temporary downloads; gitignored)
@@ -153,6 +172,8 @@ If a script writes binary payloads into `03_Sanctuary/` or outside the workspace
 ## Modular Instruction Packs
 
 Workflow recommendations live in `.github/instructions/*.instructions.md`. These express defaults as recommendations, preserving agent autonomy. Only items marked **Required** in those packs are hard constraints. Agents may deviate from **Recommended** defaults and should log the rationale in `Design_Rationale.md`.
+
+For OSM specifically, the rule above in "OSM Acquisition Guardrail (Hard Policy)" is a hard constraint and takes precedence over generic recommendation flexibility.
 
 ## Safety Rules
 
