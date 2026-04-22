@@ -54,3 +54,14 @@ data_flow:
     - json
     - yaml
     - structured_logs
+
+knowledge_hubs:
+  default_danish_contract_hub: semanticgis.dk
+  default_global_contract_hub: semanticgis.org
+  allow_multi_hub_in_single_project: true
+  route_by_source_type:
+    danish_registers: semanticgis.dk
+    datafordeler_services: semanticgis.dk
+    osm: semanticgis.org
+    satellite_imagery: semanticgis.org
+    global_reference_layers: semanticgis.org

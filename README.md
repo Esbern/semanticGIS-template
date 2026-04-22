@@ -15,6 +15,10 @@ This repository is a reusable template for starting a SemanticGIS project with c
 - `03_Sanctuary/` — Logical layer with manifests and lineage
   - `raw/` — Raw data source provenance
   - `processed/` — Processing lineage and NOIR documentation
+  - `intake/` — One intake record per query run (routing + contract + artifact declaration)
+  - `semanticgisdk_interface_contract.v1.md` — explicit boundary between semanticgis.dk contracts and local project execution
+  - `semanticgis_hub_routing.contract.v1.json` — deterministic routing rules between semanticgis.dk and semanticgis.org
+  - `processed/query_artifact_manifest.template.json` — repeatable schema for query outputs (results, GeoJSON, map)
 - `04_Analytics/` — Analytical recipe and analysis plan
 - `05_Outputs/` — Output narrative and visualisation spec
 - `10_scripts/` — Reusable project-local scripts
@@ -146,6 +150,37 @@ The template ships with one example placeholder:
 - SemanticGIS Project Bootstrap Manifest (semanticgis.org)
 - Intent-First Copilot Instructions Template (semanticgis.org)
 - Introduction: The SemanticGIS Manifesto (semanticgis.org)
+
+## semanticgis Hub Interface (Project Startup)
+
+Every new project should treat semanticgis.dk and semanticgis.org as shared source-contract hubs and this template as the local execution layer.
+
+- Read and apply: `03_Sanctuary/semanticgisdk_interface_contract.v1.md`
+- Read and apply: `03_Sanctuary/semanticgis_hub_routing.contract.v1.json`
+- Instantiate output contract from: `03_Sanctuary/processed/query_artifact_manifest.template.json`
+
+Hub-routing rule:
+
+- Use semanticgis.dk for Danish register/service contracts.
+- Use semanticgis.org for international sources (including OSM and satellite imagery contracts).
+- Danish projects may combine both hubs in a single workflow.
+
+This prevents runtime rediscovery of service type, geometry fields, hub selection, and auth semantics.
+
+## Query Run Intake (Required)
+
+Create one intake file per query run before implementation:
+
+- Template: `03_Sanctuary/intake/query_run_intake.template.json`
+- Guidance: `03_Sanctuary/intake/README.md`
+
+The intake file enforces required startup fields:
+
+- `question_id`
+- `selected_hub`
+- `contract_ref`
+- `service_family`
+- `planned_artifacts`
 
 ## Modular AI Workflow Recommendations
 
